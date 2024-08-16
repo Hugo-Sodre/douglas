@@ -17,9 +17,7 @@ export default function SecondSection() {
             "A Prefeitura de BH anunciou a construção de conjuntos habitacionais em três áreas do Castelo, para combater o déficit habitacional. Mas essa medida não está levando em conta a criação de novos problemas, enquanto existem soluções mais simples para a falta de moradia na cidade."
           }
           to={"#"}
-          src={
-            "https://marcelatropia.com.br/wp-content/webp-express/webp-images/uploads/2024/05/bairro-castelo-1.jpg.webp"
-          }
+        
         />
 
         <Card
@@ -30,9 +28,7 @@ export default function SecondSection() {
             "As emendas impositivas são uma importante ferramenta de alocação de recursos públicos para áreas prioritárias na cidade de Belo Horizonte. São parcelas do orçamento municipal"
           }
           to={"#"}
-          src={
-            "https://marcelatropia.com.br/wp-content/webp-express/webp-images/uploads/2024/03/53557824149_cfa77e5129_k.jpg.webp"
-          }
+          
         />
 
         <Card
@@ -43,9 +39,7 @@ export default function SecondSection() {
             "No início deste ano, a vereadora Marcela Trópia retomou uma iniciativa crucial para o desenvolvimento tecnológico e econômico da cidade."
           }
           to={"#"}
-          src={
-            "https://marcelatropia.com.br/wp-content/webp-express/webp-images/uploads/2024/01/Barbara-Crepaldi-CMBH.png.webp"
-          }
+         
         />
       </div>
 

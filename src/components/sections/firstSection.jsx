@@ -14,9 +14,9 @@ export default function FirstSection() {
       </svg>
 
       <img
-        src="https://marcelatropia.com.br/wp-content/uploads/2022/04/background-topo-desktop-1-scaled.jpg"
-        className="w-full h-full min-h-[400px] object-cover"
-        alt="Marcela"
+        src="dgnbg.png"
+        className="w-full h-full min-h-[200px] object-cover"
+        alt="Douglas"
       />
 
       <div className="flex flex-col gap-1 absolute bottom-[15%] left-[5%] lg:gap-4">

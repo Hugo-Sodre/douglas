@@ -1,52 +1,40 @@
 import { Fragment, useState } from "react";
 import { Dialog, Popover, Transition } from "@headlessui/react";
-import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
-import { ChevronDownIcon } from "@heroicons/react/20/solid";
+import { Bars3Icon, XMarkIcon, ChevronDownIcon } from "@heroicons/react/24/outline";
+import { Link } from "react-router-dom";
+
+import Douglas from "./sections/douglas"; // Certifique-se de que este componente está correto
 
 const products = [
-  {
-    name: "Educação",
-  },
-  {
-    name: "Transparência",
-  },
-  {
-    name: "Desburocratização",
-  },
-  {
-    name: "Mobilidade",
-  },
-  {
-    name: "Projetos de Lei",
-  },
-  {
-    name: "Releases",
-  },
+  { name: "Educação", path: "/educacao" },
+  { name: "Transparência", path: "/transparencia" },
+  { name: "Desburocratização", path: "/desburocratizacao" },
+  { name: "Mobilidade", path: "/mobilidade" },
+  { name: "Projetos de Lei", path: "/projetos-de-lei" },
+  { name: "Releases", path: "/releases" },
 ];
 
-export default function Header() {
+function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header className="bg-orange-500 shadow-md">
+    <header className="bg-[#094A24] shadow-md">
       <nav
         className="mx-auto flex max-w-7xl items-center justify-around p-6 lg:px-8"
         aria-label="Global"
       >
-        <img
-          fetchpriority="high"
-          width={800}
-          height={156}
-          alt="marcelatrópia"
-          data-srcset="https://marcelatropia.com.br/wp-content/uploads/2022/03/marcelatropia.com.br-elementor-header-15866-logo-marcela-900x176.png 900w,   https://marcelatropia.com.br/wp-content/uploads/2022/03/marcelatropia.com.br-elementor-header-15866-logo-marcela-768x150.png 768w,   https://marcelatropia.com.br/wp-content/uploads/2022/03/marcelatropia.com.br-elementor-header-15866-logo-marcela.png 1200w"
-          data-src="https://marcelatropia.com.br/wp-content/uploads/2022/03/marcelatropia.com.br-elementor-header-15866-logo-marcela-900x176.png"
-          data-sizes="(max-width: 800px) 100vw, 800px"
-          className="w-full max-w-[200px]"
-          src="https://marcelatropia.com.br/wp-content/uploads/2022/03/marcelatropia.com.br-elementor-header-15866-logo-marcela-900x176.png"
-          sizes="(max-width: 800px) 100vw, 800px"
-          srcSet="https://marcelatropia.com.br/wp-content/uploads/2022/03/marcelatropia.com.br-elementor-header-15866-logo-marcela-900x176.png 900w,   https://marcelatropia.com.br/wp-content/uploads/2022/03/marcelatropia.com.br-elementor-header-15866-logo-marcela-768x150.png 768w,   https://marcelatropia.com.br/wp-content/uploads/2022/03/marcelatropia.com.br-elementor-header-15866-logo-marcela.png 1200w"
-          data-rocket-lazy-bg-d6b2f2a8-5b33-4573-89b0-13b07cec684b="loaded"
-        />
+        <Link to="/" className="flex items-center">
+          <img
+            fetchpriority="high"
+            width={400}
+            height={156}
+            alt="marcelatrópia"
+            className="w-full max-w-[200px] h-[50px]"
+            src="./logodouglas.png"
+            sizes="(max-width: 800px) 100vw, 800px"
+            data-rocket-lazy-bg-d6b2f2a8-5b33-4573-89b0-13b07cec684b="loaded"
+          />
+        </Link>
 
         <div className="flex lg:hidden">
           <button
@@ -60,24 +48,18 @@ export default function Header() {
         </div>
 
         <Popover.Group className="hidden lg:flex lg:gap-x-8">
-          <a href="#" className="font-semibold leading-6 text-purple-800/80">
+          <Link to="/" className="font-semibold leading-6 text-white">
             Início
-          </a>
+          </Link>
 
-          <a
-            href="#"
-            className="font-semibold leading-6 text-white hover:text-purple-800/80"
-          >
-            Marcela
-          </a>
+          <Link to="/douglas" className="font-semibold leading-6 text-white hover:text-white">
+            Douglas
+          </Link>
 
           <Popover className="relative">
-            <Popover.Button className="flex items-center gap-x-1 font-semibold leading-6 text-white hover:text-purple-800/80 focus:outline-none">
+            <Popover.Button className="flex items-center gap-x-1 font-semibold leading-6 text-white hover:text-white focus:outline-none">
               Mandato
-              <ChevronDownIcon
-                className="h-5 w-5 flex-none text-gray-400"
-                aria-hidden="true"
-              />
+              <ChevronDownIcon className="h-5 w-5 flex-none text-gray-400" aria-hidden="true" />
             </Popover.Button>
 
             <Transition
@@ -91,42 +73,34 @@ export default function Header() {
             >
               <Popover.Panel className="absolute -left-8 top-full z-10 mt-3 w-full min-w-[150px] overflow-hidden rounded-3xl bg-white shadow-lg ring-1 focus:outline-none">
                 {products.map((item) => (
-                  <span
+                  <Link
                     key={item.name}
-                    className="group relative flex items-center  rounded-lg p-4 text-sm leading-6 hover:bg-gray-50"
+                    to={item.path}
+                    className="group relative flex items-center rounded-lg p-4 text-sm leading-6 hover:bg-gray-50"
                   >
                     {item.name}
-                  </span>
+                  </Link>
                 ))}
               </Popover.Panel>
             </Transition>
           </Popover>
 
-          <a
-            href="#"
-            className="font-semibold leading-6 text-white hover:text-purple-800/80"
-          >
+          <Link to="/lideranca" className="font-semibold leading-6 text-white hover:text-purple-800/80">
             Liderança
-          </a>
+          </Link>
 
-          <a
-            href="#"
-            className="font-semibold leading-6 text-white hover:text-purple-800/80"
-          >
-            Noticia
-          </a>
+          <Link to="/noticias" className="font-semibold leading-6 text-white hover:text-purple-800/80">
+            Notícia
+          </Link>
 
-          <a
-            href="#"
-            className="font-semibold leading-6 text-white hover:text-purple-800/80"
-          >
+          <Link to="/prestacao-de-contas" className="font-semibold leading-6 text-white hover:text-purple-800/80">
             Prestação de contas
-          </a>
+          </Link>
         </Popover.Group>
 
-        <button className="hidden lg:flex font-bold text-white bg-purple-800/80 rounded-md p-4 px-6 leading-4">
+        <Link to="/receber-chave" className="hidden lg:flex font-bold text-white bg-purple-800/80 rounded-md p-4 px-6 leading-4">
           Receber <br /> A Chave
-        </button>
+        </Link>
       </nav>
 
       <Dialog
@@ -149,87 +123,43 @@ export default function Header() {
           <div className="mt-6 flow-root">
             <div className="-my-6 divide-y divide-gray-500/10">
               <div className="space-y-1 py-2">
-                <a
-                  href="#"
-                  className="-mx-3 block rounded-lg pl-5 text-lg font-bold leading-7 text-cyan-600 hover:bg-gray-50"
-                >
+                <Link to="/" className="-mx-3 block rounded-lg pl-5 text-lg font-bold leading-7 text-cyan-600 hover:bg-gray-50">
                   Início
-                </a>
-                <a
-                  href="#"
-                  className="-mx-3 block rounded-lg pl-5 text-lg font-bold leading-7 text-orange-500 hover:bg-gray-50"
-                >
+                </Link>
+                <Link to="/marcela" className="-mx-3 block rounded-lg pl-5 text-lg font-bold leading-7 text-orange-500 hover:bg-gray-50">
                   Marcela
-                </a>
-                <a
-                  href="#"
-                  className="-mx-3 block rounded-lg pl-5 text-lg font-bold leading-7 text-orange-500 hover:bg-gray-50"
-                >
+                </Link>
+                <Link to="/releases" className="-mx-3 block rounded-lg pl-5 text-lg font-bold leading-7 text-orange-500 hover:bg-gray-50">
                   Releases
-                </a>
-                <a
-                  href="#"
-                  className="-mx-3 block rounded-lg pl-5 text-lg font-bold leading-7 text-orange-500 hover:bg-gray-50"
-                >
+                </Link>
+                <Link to="/projetos-de-lei" className="-mx-3 block rounded-lg pl-5 text-lg font-bold leading-7 text-orange-500 hover:bg-gray-50">
                   Projetos de Lei
-                </a>
-                <a
-                  href="#"
-                  className="-mx-3 block rounded-lg pl-5 text-lg font-bold leading-7 text-orange-500 hover:bg-gray-50"
-                >
+                </Link>
+                <Link to="/noticias" className="-mx-3 block rounded-lg pl-5 text-lg font-bold leading-7 text-orange-500 hover:bg-gray-50">
                   Notícias
-                </a>
-                <a
-                  href="#"
-                  className="-mx-3 block rounded-lg pl-5 text-lg font-bold leading-7 text-orange-500 hover:bg-gray-50"
-                >
+                </Link>
+                <Link to="/programa-de-lideranca" className="-mx-3 block rounded-lg pl-5 text-lg font-bold leading-7 text-orange-500 hover:bg-gray-50">
                   Programa de Liderança
-                </a>
-                <a
-                  href="#"
-                  className="-mx-3 block rounded-lg pl-5 text-lg font-bold leading-7 text-orange-500 hover:bg-gray-50"
-                >
+                </Link>
+                <Link to="/lideranca" className="-mx-3 block rounded-lg pl-5 text-lg font-bold leading-7 text-orange-500 hover:bg-gray-50">
                   Liderança
-                </a>
-                <a
-                  href="#"
-                  className="-mx-3 block rounded-lg pl-5 text-lg font-bold leading-7 text-orange-500 hover:bg-gray-50"
-                >
+                </Link>
+                <Link to="/prestacao-de-contas" className="-mx-3 block rounded-lg pl-5 text-lg font-bold leading-7 text-orange-500 hover:bg-gray-50">
                   Prestação de Contas
-                </a>
-                <a
-                  href="#"
-                  className="-mx-3 block rounded-lg pl-5 text-lg font-bold leading-7 text-orange-500 hover:bg-gray-50"
-                >
+                </Link>
+                <Link to="/transparencia" className="-mx-3 block rounded-lg pl-5 text-lg font-bold leading-7 text-orange-500 hover:bg-gray-50">
                   Transparência
-                </a>
-                <a
-                  href="#"
-                  className="-mx-3 block rounded-lg pl-5 text-lg font-bold leading-7 text-orange-500 hover:bg-gray-50"
-                >
+                </Link>
+                <Link to="/educacao" className="-mx-3 block rounded-lg pl-5 text-lg font-bold leading-7 text-orange-500 hover:bg-gray-50">
                   Educação
-                </a>
-                <a
-                  href="#"
-                  className="-mx-3 block rounded-lg pl-5 text-lg font-bold leading-7 text-orange-500 hover:bg-gray-50"
-                >
+                </Link>
+                <Link to="/desburocratizacao" className="-mx-3 block rounded-lg pl-5 text-lg font-bold leading-7 text-orange-500 hover:bg-gray-50">
                   Desburocratização
-                </a>
-                <a
-                  href="#"
-                  className="-mx-3 block rounded-lg pl-5 text-lg font-bold leading-7 text-orange-500 hover:bg-gray-50"
-                >
+                </Link>
+                <Link to="/mobilidade" className="-mx-3 block rounded-lg pl-5 text-lg font-bold leading-7 text-orange-500 hover:bg-gray-50">
                   Mobilidade
-                </a>
+                </Link>
               </div>
-              {/* <div className="py-6">
-                <a
-                  href="#"
-                  className="-mx-3 block rounded-lg pl-5.5 text-base font-bold leading-7 text-white hover:bg-gray-50"
-                >
-                  redes sociais
-                </a>
-              </div> */}
             </div>
           </div>
         </Dialog.Panel>
@@ -237,3 +167,5 @@ export default function Header() {
     </header>
   );
 }
+
+export default Header;
